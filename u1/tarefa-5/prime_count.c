@@ -31,7 +31,7 @@ static long count_primes_sequential(long n) {
 static long count_primes_parallel(long n) {
     long count = 0;
 
-    #pragma omp parallel for reduction(+:count)
+    #pragma omp parallel for
     for (long i = 2; i <= n; i++) {
         if (is_prime(i)) {
             count++;

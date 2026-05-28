@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -O2 -fopenmp
+CFLAGS = -Wall -Wextra -O0 -fopenmp
 LDFLAGS = -fopenmp
 
 SRC = prime_count.c

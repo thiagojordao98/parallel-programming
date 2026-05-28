@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
     long par_count = count_primes_parallel(n);
     double par_time = omp_get_wtime() - start_par;
 
-    printf("Contagem de primos de 2 ate %ld\n", n);
+    printf("Contagem de primos de 2 até %ld\n", n);
     printf("SEQUENCIAL -> primos: %ld | tempo(s): %.6f\n", seq_count, seq_time);
     printf("PARALELA   -> primos: %ld | tempo(s): %.6f | threads: %d\n",
            par_count, par_time, omp_get_max_threads());

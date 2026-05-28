@@ -1,7 +1,7 @@
 # Análise da Tarefa 5: Contagem de Números Primos
 
 ## Objetivo
-Contar quantos números primos existem de 2 até `n` e comparar as versões **SEQUENCIAL** e **PARALELA** (OpenMP com `#pragma omp parallel for`).
+Contar quantos números primos existem de 2 até `n` e comparar as versões **SEQUENCIAL** e **PARALELA** (OpenMP com `#pragma omp parallel for` e `reduction`).
 
 ## Resultado observado
 Com `n = 500000`, o programa retornou a mesma contagem nas duas versões:

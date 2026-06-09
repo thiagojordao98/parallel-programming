@@ -43,14 +43,21 @@ static long count_primes_parallel(long n) {
 
 int main(int argc, char **argv) {
     long n = 500000;
+    int num_threads = omp_get_max_threads();
+
     if (argc > 1) {
         n = strtol(argv[1], NULL, 10);
     }
+    if (argc > 2) {
+        num_threads = strtol(argv[2], NULL, 10);
+    }
 
-    if (n < 2) {
-        fprintf(stderr, "Uso: %s [n>=2]\n", argv[0]);
+    if (n < 2 || num_threads < 1) {
+        fprintf(stderr, "Uso: %s [n>=2] [numero_de_threads>=1]\n", argv[0]);
         return 1;
     }
+
+    omp_set_num_threads(num_threads);
 
     double start_seq = omp_get_wtime();
     long seq_count = count_primes_sequential(n);

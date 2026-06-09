@@ -35,8 +35,14 @@ int main(int argc, char **argv) {
     if (argc > 1) {
         n = (size_t)strtoull(argv[1], NULL, 10);
     }
+    if (argc > 2) {
+        int nt = atoi(argv[2]);
+        if (nt > 0) {
+            omp_set_num_threads(nt);
+        }
+    }
     if (n == 0) {
-        fprintf(stderr, "Uso: %s [tamanho]\n", argv[0]);
+        fprintf(stderr, "Uso: %s [tamanho] [num_threads]\n", argv[0]);
         return 1;
     }
 
@@ -53,7 +59,7 @@ int main(int argc, char **argv) {
 
     int threads = omp_get_max_threads();
     printf("Benchmark compute-bound: calculo matematico intensivo\n");
-    printf("Tamanho: %zu\n", n);
+    printf("Tamanho: %llu\n", (unsigned long long)n);
     printf("Threads: %d\n", threads);
 
     double start = omp_get_wtime();

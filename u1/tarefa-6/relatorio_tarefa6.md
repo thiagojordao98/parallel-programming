@@ -47,7 +47,7 @@ O desempenho saltou de quase 3 segundos na versão *critical* para rápidos ~25 
 **Efeito de cada cláusula introduzida no teste:**
 * **`private(x, y)`**: Garante que cada thread tenha a sua própria cópia não inicializada das variáveis `x` e `y` no for, prevenindo o compartilhamento de valores momentâneos entre iterações paralelas de threads diferentes.
 * **`firstprivate(first_priv_var)`**: Inicializa uma nova variável privada com o exato valor que essa mesma variável continha imediatamente antes do escopo paralelo. No nosso teste, a variável reteve o valor prévio de inicialização (100) garantindo leitura coerente no processamento interno da thread.
-* **`lastprivate(last_priv_var)`**: Opera similarmente à cláusula *private*, porém encarrega a thread incumbida de rodar a "sequencialmente última iteração lógica" do laço de for (*i == N - 1*) a atualizar a variável externa correspondente. No nosso teste a variável exportou o ID da thread da última passagem do laço.
+* **`lastprivate(last_priv_var)`**: Opera similarmente à cláusula private durante o laço, mas garante que o valor atribuído na iteração sequencialmente final (último valor de i) seja preservado e copiado de volta para a variável do escopo externo após o término do laço.
 * **`shared(count, shared_var)`**: A cláusula *shared* especifica acesso simultâneo na memória global original, usada para guardar informações transversais e consolidadas a todos os recursos de processamento (neste caso, atualizamos os resultados numétricos `count` e `shared_var` via bloco critical para manter coerência sem perda de dados).
 
 ### 3.4 O Papel de `default(none)`

@@ -1,1 +1,1 @@
-# Numero de threads do processador é 8, nessa tarefa devemos fazer um vetor de 8 posições onde iremos escrever o id da thread usando openmp, 
+# Numero de threads do processador é 8, nessa tarefa devemos fazer um vetor de 8 posições onde iremos escrever o id da thread usando openmp.
